@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= data.question.text %></title>
+  <style>
+    /* Add any necessary CSS styles here */
+  </style>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['{tex}', '{/tex}']],
+      },
+    });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <h1><%= data.question.text %></h1>
+  
+  <% if (data.type == 'matrix') { %>
+    <!-- Display content for 'matrix' type questions -->
+    <!-- Example: -->
+    <table>
+      <!-- Add your HTML content for 'matrix' type here -->
+      <tr>
+        <td>Row 1, Column 1</td>
+        <td>Row 1, Column 2</td>
+      </tr>
+      <tr>
+        <td>Row 2, Column 1</td>
+        <td>Row 2, Column 2</td>
+      </tr>
+      <!-- Add more rows/columns as needed -->
+    </table>
+  <% } else { %>
+    <!-- Display content for other question types -->
+    <!-- Example: -->
+    <ul>
+      <% data.options.forEach(function(option, index) { %>
+        <li><%= option.d.text %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+  
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "ziptasknodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "cheerio": "^1.0.0-rc.12",
+    "ejs": "^3.1.9",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "html-pdf": "^3.0.1",
+    "jszip": "^3.10.1",
+    "mathjax-node": "^2.1.1",
+    "mongoose": "^7.5.3",
+    "node-fetch": "^3.3.2",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^21.3.6",
+    "sharp": "^0.32.6"
+  }
+}
