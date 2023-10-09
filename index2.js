@@ -2,8 +2,8 @@ const puppeteer = require('puppeteer');
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path')
+const questionData = require('./upsc/quesTopic2.json')
 
-let questionData = path.join(__dirname,'upsc','quesTopic1.json') 
 console.log(questionData)
 const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML template file
 
@@ -16,6 +16,7 @@ const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML t
 
     // Create an array to store HTML content for each question
     const htmlContents = [];
+    console.log(questionData);
 
     for (let index = 0; index < questionData.length; index++) {
         const item = questionData[index];
@@ -34,7 +35,7 @@ const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML t
     await page.setContent(htmlContents.join('')); // Join all HTML contents into a single string
 
     // Generate a single PDF containing all questions
-    const pdfPath = path.join(__dirname,'PDF','upsc','Indian Polity and Governance','Electoral-System.pdf')
+    const pdfPath = path.join(__dirname,'Ques-PDF','upsc','Indian Polity and Governance','Political Parties.pdf')
     await page.pdf({ path: pdfPath, format: 'A4' });
 
     await browser.close();
