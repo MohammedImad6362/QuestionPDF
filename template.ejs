@@ -55,8 +55,12 @@
         <!-- Display the answer -->
         <span><u>Answer</u>:</span>
         <span>
-          <%= data.options[data.answer].d.text %>
-        </span><br>
+          <% if (data.options[data.answer]) { %> for not
+            <%= data.options[data.answer].d.text %>
+              <% } else { %>
+                <%= data.answer %>
+                  <% } %>
+        </span><br><br>
 
         <!-- Display the solution -->
         <!-- <span>Solution:</span>

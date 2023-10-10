@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
 const ejs = require('ejs');
 const fs = require('fs');
+const path = require('path')
 
-const questionData = require('./dataNewExample.json'); // Load your JSON data (remove the .js extension)
+const questionData = require('./UPSC-JSON/Subject-1/merged-questions-chunk3.json'); // Load your JSON data (remove the .js extension)
 const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML template file
 let index = 1;
 (async () => {
@@ -39,8 +40,9 @@ let index = 1;
 	// Set the HTML content of the page with all questions
 	await page.setContent(htmlContents.join('')); // Join all HTML contents into a single string
 
+    const pdfPath = path.join(__dirname, 'PDF', 'upsc', '1-History', 'Part3.pdf')
 	// Generate a single PDF containing all questions
-	await page.pdf({ path: 'all_questions.pdf', format: 'A4' });
+	await page.pdf({ path: pdfPath, format: 'A4' });
 
 	await browser.close();
 	console.log('PDF with all questions generated successfully.');
