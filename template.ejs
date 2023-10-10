@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title><%= data.question.text %></title>
+  <title>
+    <%= data.question.text %>
+  </title>
   <style>
-    *, html,body{
-        font-family: sans-serif;
+    *,
+    html,
+    body {
+      font-family: sans-serif;
     }
+
     /* Add any necessary CSS styles here */
   </style>
   <script type="text/x-mathjax-config">
@@ -18,25 +24,45 @@
       messageStyle: 'none', // Disable the processing message
     });
   </script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 </head>
+
 <body style="padding: 20px;">
-    <div >
-    <span style="font-weight: bold;"><% if (data.type == 'matrix') { %></span>
-        <!-- Display content for 'matrix' type questions -->
-    <p><%= index %>.  <%- data.question.text %></p>
+  <div>
+    <span style="font-weight: bold;">
+      <% if (data.type=='matrix' ) { %>
+    </span>
+    <!-- Display content for 'matrix' type questions -->
+    <p>
+      <%= index %>. <%- data.question.text %>
+    </p>
 
     <% } else { %>
-        <h1 style="font-size: 16px;"> <%= index %>.  <%- data.question.text %></h1>
-    <!-- Display content for other question types -->
-    <!-- Example: -->
-    <ul>
-      <% data.options.forEach(function(option, index) { %>
-        <li><%- option.d.text %></li>
-      <% }); %>
-    </ul>
-  <% } %>
+      <h1 style="font-size: 16px;">
+        <%= index %>. <%- data.question.text %>
+      </h1>
+      <!-- Display content for other question types -->
+      <!-- Example: -->
+      <ul>
+        <% data.options.forEach(function(option, index) { %>
+          <%- String.fromCharCode(97 + index) + '. ' + option.d.text %><br>
+            <% }); %>
+      </ul>
+      <% } %>
+
+        <!-- Display the answer -->
+        <span><u>Answer</u>:</span>
+        <span>
+          <%= data.options[data.answer].d.text %>
+        </span><br>
+
+        <!-- Display the solution -->
+        <!-- <span>Solution:</span>
+        <span><%= data.solution.text %></span> -->
+
   </div>
 </body>
+
 </html>
