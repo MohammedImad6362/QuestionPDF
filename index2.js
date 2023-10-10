@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path')
-const questionData = require('./upsc/quesTopic2.json')
+const questionData = require('./UPSC-JSON/Subject-9/merged-questions-chunk1.json')
 
 console.log(questionData)
 const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML template file
@@ -16,7 +16,7 @@ const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML t
 
     // Create an array to store HTML content for each question
     const htmlContents = [];
-    console.log(questionData);
+    // console.log(questionData);
 
     for (let index = 0; index < questionData.length; index++) {
         const item = questionData[index];
@@ -35,7 +35,7 @@ const htmlTemplate = fs.readFileSync('template.ejs', 'utf8'); // Read the HTML t
     await page.setContent(htmlContents.join('')); // Join all HTML contents into a single string
 
     // Generate a single PDF containing all questions
-    const pdfPath = path.join(__dirname,'Ques-PDF','upsc','Indian Polity and Governance','Political Parties.pdf')
+    const pdfPath = path.join(__dirname,'PDF','upsc','9-Current Affairs','Part1.pdf')
     await page.pdf({ path: pdfPath, format: 'A4' });
 
     await browser.close();
